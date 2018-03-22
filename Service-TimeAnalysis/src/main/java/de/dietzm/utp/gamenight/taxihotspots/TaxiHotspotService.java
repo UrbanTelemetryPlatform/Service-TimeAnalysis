@@ -31,7 +31,10 @@ public class TaxiHotspotService extends HttpServlet {
 			orderBy = "pickupcount";
 		}
 		
-		JsonArray result = querySQLTable(orderBy);
+		int limit = getParameterAndCastToInt(request, "limit", 30); 
+		
+		
+		JsonArray result = querySQLTable(orderBy,limit);
 		
 		
 		response.setContentType("application/json");
@@ -39,12 +42,20 @@ public class TaxiHotspotService extends HttpServlet {
 		response.getWriter().write(result.toString());
 		
 	} 
+	
+	private int getParameterAndCastToInt(HttpServletRequest request, String name, int def) {
+		String param = request.getParameter(name);
+		if(param != null && !param.equals("")) {
+			return new Integer(param).intValue();
+		}
+		return def;
+	}
+	
 
-
-	public JsonArray querySQLTable(String orderBy) throws ServletException {
+	public JsonArray querySQLTable(String orderBy, int limit) throws ServletException {
 		
 		String query = "SELECT * FROM " + SQL_TABLENAME + " ";
-		query += " ORDER BY " + orderBy + " DESC LIMIT 30";
+		query += " ORDER BY " + orderBy + " DESC LIMIT " + limit;
 		JsonArray entries = new JsonArray();
 		
 		try {

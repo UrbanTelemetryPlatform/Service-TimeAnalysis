@@ -1,1 +1,7 @@
-de\dietzm\utp\timanalysis\model\GamenightModel.class
+de/dietzm/utp/gamenight/GameNightDuringService.class
+de/dietzm/utp/gamenight/GameNightBeforeService.class
+de/dietzm/utp/timanalysis/model/WeekdayAndHour.class
+de/dietzm/utp/gamenight/taxihotspots/TaxiHotspotService.class
+de/dietzm/utp/timanalysis/model/GamenightModel.class
+de/dietzm/utp/timanalysis/WeekdayAndHoursComparisonService.class
+de/dietzm/utp/timanalysis/WeekdayAndHoursService.class
